@@ -1,3 +1,4 @@
+#!/usr/bin/python3.6
 
 def __get_tuple1():
     return (123, 'VOD LN', 'Vodafone', 23.36000061)
