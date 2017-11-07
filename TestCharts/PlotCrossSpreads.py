@@ -45,7 +45,9 @@ df_final = df_ig.join(df_pl, lsuffix='_ig', rsuffix='_pl', how='outer').join(df_
 
 # plot IG
 # simple plot
-# df_ig.plot()
+ig_chart = df_ig.plot(title='IG prices', lw=1, marker='.', markersize=10)
+ig_chart.set_xlabel("Received At (local time)")
+ig_chart.set_ylabel("Prices (GBP)")
 
 # plot with legend
 # df_ig_data = {'ig_bid': df_ig['bid'], 'ig_ask': df_ig['ask']}
