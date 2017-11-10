@@ -33,13 +33,17 @@ dates_col = ['PublishedAt']
 dtypes = {'Bid': 'float', 'Ask': 'float'}
 df_fm = pd.read_csv(fm_file_path, sep=',', header=0, usecols=cols_to_read, dtype=dtypes, parse_dates=dates_col)
 
-
 # set time column as index
 df_ig.set_index('receivedAt', inplace=True)
 df_pl.set_index('receivedAt', inplace=True)
 df_fm.set_index('PublishedAt', inplace=True)
 
-df_final = df_ig.join(df_pl, lsuffix='_ig', rsuffix='_pl', how='outer').join(df_fm, lsuffix='_ig11', rsuffix='_fm', how='outer')
+df_final = df_ig.join(df_pl, lsuffix='_ig', rsuffix='_pl', how='outer').join(df_fm, lsuffix='_11', rsuffix='_fm', how='outer')
+
+
+# fill in missing data
+df_final.fillna(method='pad', inplace=True)
+df_final.fillna(0, inplace=True)
 
 # print(df_final)
 
