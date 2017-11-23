@@ -20,13 +20,14 @@ df.set_index('Time', inplace=True)
 
 print(df)
 
+marker_char = '.'
 # simple plot
-chart = df.plot(title='Security price (steps)', lw=1, marker='.', markersize=10, drawstyle="steps-post")
+chart = df.plot(title='Security price (steps)', lw=1, marker=marker_char, markersize=10, drawstyle="steps-post")
 chart.set_xlabel("Received At (local time)")
 chart.set_ylabel("GBP")
 
 df2 = df
-chart = df2.plot(title='Security price', lw=1, marker='.', markersize=10)
+chart = df2.plot(title='Security price', lw=1, marker=marker_char, markersize=10)
 chart.set_xlabel("Received At (local time)")
 chart.set_ylabel("GBP")
 

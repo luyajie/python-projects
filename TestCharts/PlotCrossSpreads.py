@@ -2,6 +2,7 @@
 
 from dateutil import parser
 import os
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -41,7 +42,13 @@ df_fm.set_index('PublishedAt', inplace=True)
 
 df_final = df_ig.join(df_pl, lsuffix='_ig', rsuffix='_pl', how='outer').join(df_fm, lsuffix='_ig11', rsuffix='_fm', how='outer')
 
-# print(df_final)
+# df_final['ask_ig'] = np.where(df_final['ask_ig'].isnull(), df_final['ask_ig'].shift(1), df_final['ask_ig'])
+# df_final['bid_ig'] = np.where(df_final['bid_ig'].isnull(), df_final['bid_ig'].shift(1), df_final['bid_ig'])
+df_final['ask_pl'] = np.where(df_final['ask_pl'].isnull(), np.where(df_final['ask_pl'].shift(1).isnull(), 0, df_final['ask_pl'].shift(1)), df_final['ask_pl'])
+# df_final['bid_pl'] = np.where(df_final['bid_pl'].isnull(), df_final['bid_pl'].shift(1), df_final['bid_pl'])
+
+print(df_final)
+
 
 # plot IG
 # simple plot
@@ -62,4 +69,4 @@ ig_chart.set_ylabel("Prices (GBP)")
 #all_df = pd.DataFrame(all_data)
 #all_df.plot()
 
-plt.show()
+# plt.show()
