@@ -4,12 +4,12 @@
 
 # lst is always passed with ref
 def add_to_list_1(number, lst):
-    print("Adding number {0}".format(number))
+    print("add_to_list_1 : Adding number {0}".format(number))
     lst.append(number)
 
 # default list is appended each time
 def add_to_list_2(number, lst = []):
-    print("Adding number {0}".format(number))
+    print("add_to_list_2 : Adding number {0}".format(number))
     lst.append(number)
     return lst
 
@@ -17,7 +17,7 @@ def add_to_list_2(number, lst = []):
 def add_to_list_3(number, lst = None):
     if lst is None:
         lst = []
-    print("Adding number {0}".format(number))
+    print("add_to_list_3 : Adding number {0}".format(number))
     lst.append(number)
     return lst
 

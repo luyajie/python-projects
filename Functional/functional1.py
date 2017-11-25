@@ -7,13 +7,16 @@
 
 from functools import reduce
 
+
 def print_list_info(lst_name: str, lst: []) -> None:
     print("{0} : {1}".format(lst_name, lst))
     print("length = {0}".format(len(lst)))
     print('---------------------------------')
 
+
 def square(x):
     return (x, x**2)
+
 
 def is_square_even(pair):
     return pair[1]%2 == 0
@@ -25,8 +28,11 @@ print_list_info("zip_list", zip_list)
 
 #  map
 # print name length
-name_lengths = list(map(len, ["Mary", "Isla", "Sam"]))
+name_list = ["Mary", "Isla", "Fisher"]
+name_lengths = list(map(len, name_list))
 print_list_info("name_lengths", name_lengths)
+name_and_lengths = list(zip(name_list, map(len, name_list)))
+print_list_info("name_and_lengths", name_and_lengths)
 
 main_list = range(1, 11)
 
